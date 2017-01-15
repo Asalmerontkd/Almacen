@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/carga"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.antonio.almacen.MainActivity"
+    tools:showIn="@layout/activity_main"
+    android:baselineAligned="false">
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:columnCount="4">
+
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/izquierdaarriba">
+
+            <ImageView
+                android:id="@+id/carga"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder"
+                android:visibility="invisible"/>
+        </LinearLayout>
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/bordearribaabajo">
+
+
+        </LinearLayout>
+        <LinearLayout
+            app:layout_columnSpan="2"
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/arribaderecha">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/bordelados">
+
+
+        </LinearLayout>
+        <LinearLayout
+            app:layout_rowSpan="3"
+            app:layout_gravity="center|fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/arriba"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/descarga"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@color/carga"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/input"/>
+
+            <ImageView
+                android:id="@+id/descarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder"
+                android:visibility="invisible"/>
+        </LinearLayout>
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/bordederecha">
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/bordelados">
+
+
+        </LinearLayout>
+        <LinearLayout
+            app:layout_rowSpan="2"
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@color/almacen"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/carrito"/>
+
+        </LinearLayout>
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/bordelados">
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/bordelados">
+
+            <ImageView
+                android:id="@+id/salida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder"
+                android:visibility="invisible"/>
+        </LinearLayout>
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:background="@drawable/bordelados">
+
+            <ImageView
+                android:id="@+id/entrada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder"
+                android:visibility="invisible"/>
+        </LinearLayout>
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="0.3"
+            android:background="@color/backgroundGray">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/down"/>
+        </LinearLayout>
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="0.3"
+            app:layout_columnSpan="2">
+
+
+        </LinearLayout>
+        <LinearLayout
+            app:layout_gravity="fill"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="0.3"
+            android:background="@color/backgroundGray">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/up"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.GridLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="background">#51C47F</color>
+    <color name="backgroundGray">#DADADA</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="camino">#616161</color>
+    <color name="almacen">#DBB96F</color>
+    <color name="carga">#000000</color>
+    <color name="borde">#FFF700</color>
+</resources>
