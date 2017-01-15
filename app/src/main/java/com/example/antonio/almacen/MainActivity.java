@@ -10,6 +10,14 @@ import android.widget.Toast;
 import com.example.antonio.almacen.interfaces.Peticiones;
 import com.example.antonio.almacen.modelo.Estado;
 import com.example.antonio.almacen.utils.Constants;
+import com.github.nkzawa.emitter.Emitter;
+import com.github.nkzawa.socketio.client.IO;
+import com.github.nkzawa.socketio.client.Socket;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URISyntaxException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +50,74 @@ public class MainActivity extends AppCompatActivity {
 
     boolean chepo=true;
 
+    Socket mSocket;
+    {
+        try {
+            mSocket = IO.socket(Constants.urlBase);
+            mSocket.on(Socket.EVENT_CONNECT, new Emitter.Listener(){
+
+                @Override
+                public void call(Object... args) {
+                    log("Entro eveto CONNECT");
+                    mSocket.emit("my event", "Hola chepox");
+                }
+            }).on("my response", new Emitter.Listener() {
+                @Override
+                public void call(final Object... args) {
+                    //JSONObject obj = (JSONObject)args[0];
+                    log("Entro eveto emitido por chepox: "+args[0]);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            datos(""+args[0]);
+                            int entrada = Integer.parseInt(args[0].toString());
+                            mostrar(entrada);
+                        }
+                    });
+
+                }
+            }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    //JSONObject obj = (JSONObject)args[0];
+                    log("Entro eveto DISCONNECT "+args[0]);
+                }
+            }).on(Socket.EVENT_MESSAGE, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    //JSONObject obj = (JSONObject)args[0];
+                    log("Entro eveto MESSAGE "+args[0]);
+                }
+            }).on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    //JSONObject obj = (JSONObject)args[0];
+                    log("Entro eveto CONNECT_ERROR "+args[0]);
+                }
+            }).on(Socket.EVENT_RECONNECTING, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    //JSONObject obj = (JSONObject)args[0];
+                    log("Entro eveto RECONNECTING "+args[0]);
+                }
+            }).on(Socket.EVENT_RECONNECT_ERROR, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    //JSONObject obj = (JSONObject)args[0];
+                    log("Entro eveto RECONNECT_ERROR "+args[0]);
+                }
+            }).on(Socket.EVENT_ERROR, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    //JSONObject obj = (JSONObject)args[0];
+                    log("Entro eveto EVENT_ERROR "+args[0]);
+                }
+            });
+        } catch (URISyntaxException e) {
+            log(e.getMessage());
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +125,21 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
-        initRetrofit();
+        //initRetrofit();
+        mSocket.connect();
+    }
+
+
+    public void datos(final String data)
+    {
+        log(data);
+        Toast.makeText(getApplicationContext(), "mensaje: "+data, Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        new Thread(new Runnable() {
+        /*new Thread(new Runnable() {
             @Override
             public void run() {
                 while (chepo)
@@ -68,13 +152,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        }).start();
+        }).start();*/
     }
 
     @Override
     protected void onDestroy() {
-        chepo=false;
         super.onDestroy();
+        chepo=false;
+        mSocket.disconnect();
     }
 
     public void initRetrofit()
@@ -121,8 +206,14 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Estado> call, Response<Estado> response) {
                 log(""+response.code());
                 log(""+response.body());
-                estado = Integer.parseInt(response.body().getState());
-                mostrar(estado);
+                try {
+                    estado = Integer.parseInt(response.body().getState());
+                    mostrar(estado);
+                }
+                catch (Exception e)
+                {
+                    log(e.getMessage());
+                }
             }
 
             @Override
@@ -136,8 +227,10 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.fab)
     public void action()
     {
-        actualiza();
+        //actualiza();
     }
+
+
 
     public void log(String mesage){
         Log.e("Pete debug",mesage);

@@ -5,7 +5,7 @@ package com.example.antonio.almacen.utils;
  */
 
 public class Constants {
-    public static final String urlBase = "http://192.168.12.106:3000/";
+    public static final String urlBase = "http://192.168.12.205:3000/";
 
     public static final String uriEstado = "state";
 }
