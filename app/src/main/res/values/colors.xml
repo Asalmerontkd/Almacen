@@ -9,4 +9,7 @@
     <color name="almacen">#DBB96F</color>
     <color name="carga">#000000</color>
     <color name="borde">#FFF700</color>
+    <color name="statusOK">#08C90B</color>
+    <color name="statusAlert">#E0AA00</color>
+    <color name="statusBad">#C90808</color>
 </resources>

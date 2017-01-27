@@ -6,8 +6,8 @@
         </shape>
     </item>
     <item android:top="5dp">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/almacen" />
-        </shape>
+        <bitmap
+            android:gravity="fill"
+            android:src="@drawable/wood"></bitmap>
     </item>
 </layer-list>

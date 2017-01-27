@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/carga"
+    android:background="@drawable/patternback"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.antonio.almacen.MainActivity"
@@ -29,17 +29,27 @@
 
             <ImageView
                 android:id="@+id/carga"
-                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/placeholder"
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
         </LinearLayout>
         <LinearLayout
             app:layout_gravity="fill"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
+            android:gravity="right"
             android:background="@drawable/bordearribaabajo">
+
+            <ImageView
+                android:id="@+id/medio"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder"
+                android:visibility="invisible"/>
 
 
         </LinearLayout>
@@ -48,7 +58,17 @@
             app:layout_gravity="fill"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
+            android:gravity="right"
             android:background="@drawable/arribaderecha">
+
+            <ImageView
+                android:id="@+id/descarga"
+                android:layout_gravity="center"
+                android:paddingRight="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder"
+                android:visibility="invisible"/>
 
 
         </LinearLayout>
@@ -63,7 +83,7 @@
         </LinearLayout>
         <LinearLayout
             app:layout_rowSpan="3"
-            app:layout_gravity="center|fill"
+            app:layout_gravity="fill"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
             android:background="@drawable/arriba"
@@ -71,7 +91,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="50dp"
                 android:src="@drawable/descarga"/>
 
 
@@ -80,22 +100,17 @@
             app:layout_gravity="fill"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
+            android:gravity="center"
             android:background="@color/carga"
             android:orientation="vertical">
 
-
             <ImageView
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/input"/>
 
-            <ImageView
-                android:id="@+id/descarga"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/placeholder"
-                android:visibility="invisible"/>
+
+
         </LinearLayout>
         <LinearLayout
             app:layout_gravity="fill"
@@ -120,12 +135,12 @@
             app:layout_gravity="fill"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
-            android:background="@color/almacen"
+            android:background="@drawable/wood"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="50dp"
                 android:src="@drawable/carrito"/>
 
         </LinearLayout>
@@ -147,6 +162,8 @@
 
             <ImageView
                 android:id="@+id/salida"
+                android:layout_gravity="bottom"
+                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/placeholder"
@@ -160,6 +177,8 @@
 
             <ImageView
                 android:id="@+id/entrada"
+                android:paddingBottom="10dp"
+                android:layout_gravity="bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/placeholder"
@@ -173,7 +192,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/down"/>
         </LinearLayout>
         <LinearLayout
@@ -192,7 +211,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/up"/>
         </LinearLayout>
 

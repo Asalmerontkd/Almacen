@@ -35,4 +35,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.github.nkzawa:socket.io-client:0.3.0'
+    compile 'com.github.javiersantos:MaterialStyledDialogs:2.0'
 }
