@@ -130,9 +130,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        //initRetrofit();
         //mSocket.connect();
     }
 
@@ -151,20 +148,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         hilos();
-        /*new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (chepo)
-                {
-                    actualiza();
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();*/
     }
 
     @Override
@@ -173,15 +156,6 @@ public class MainActivity extends AppCompatActivity {
         chepo=false;
         mSocket.disconnect();
         hilo=false;
-    }
-
-    public void initRetrofit()
-    {
-        retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.urlBase)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        peticiones = retrofit.create(Peticiones.class);
     }
 
     public void mostrar(int img)
@@ -273,6 +247,11 @@ public class MainActivity extends AppCompatActivity {
                                 });
                             }
                             past=current;
+                            try {
+                                Thread.sleep(5000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                         cambios=current;
                         try {
@@ -286,39 +265,12 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void actualiza()
-    {
-        //Todo hacer petición al servidor de chepo
-        Call<Estado> call = peticiones.consultaAlmacen();
-        call.enqueue(new Callback<Estado>() {
-            @Override
-            public void onResponse(Call<Estado> call, Response<Estado> response) {
-                log(""+response.code());
-                log(""+response.body());
-                try {
-                    estado = Integer.parseInt(response.body().getState());
-                    mostrar(estado);
-                }
-                catch (Exception e)
-                {
-                    log(e.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Estado> call, Throwable t) {
-                log(" "+t.getMessage());
-                Toast.makeText(getApplicationContext(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @OnClick(R.id.fab)
     public void action()
     {
-        //actualiza();
-        //mSocket.connect();
-        test();
+        mSocket.connect();
+        //test();
     }
 
     int a=1;
